@@ -1,1 +1,127 @@
-<h1>Welcome to the home page</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Diabetes Information</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+  <!-- Include Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: 'Arimo', sans-serif;
+      background-color: #333333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .info {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      width: 100%;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      font-size: 18px;
+      background-image: linear-gradient(to right, #F6358A, black);
+      color: white;
+      padding: 10px;
+      border-radius: 3px;
+      text-decoration: none;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    a:hover {
+        background-image: linear-gradient(to right, #F6358A, red);
+    }
+
+    canvas {
+      display: block;
+      margin: auto;
+      max-width: 100%;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="info">
+    <h1>Diabetes Information</h1>
+
+    <p>
+      Diabetes is a chronic condition that affects how your body processes glucose, a type of sugar. There are different types of diabetes, including type 1, type 2, and gestational diabetes.
+      It's important to monitor your health and make informed decisions to manage diabetes effectively.
+    </p>
+
+    <img src="https://th.bing.com/th/id/OIP.fhr2U4MV_I0a7pqWGzMaQwHaD2?pid=ImgDet&rs=1" alt="Diabetes Image 1">
+    <p>
+      Diabetes can lead to various complications, including heart disease, kidney damage, and nerve problems. Managing your blood sugar levels through a healthy lifestyle, medication, and regular check-ups can help prevent these complications.
+    </p>
+
+    <img src="https://diabetes-resources-production.s3.eu-west-1.amazonaws.com/resources-s3/DUK001%20Infographic%202%20AW.png?null" alt="Diabetes Image 2">
+    <p>
+      A balanced diet, regular exercise, and maintaining a healthy weight are essential for managing diabetes. Your healthcare provider can provide personalized guidance and treatment options based on your individual needs.
+    </p>
+
+    <!-- Create a link to the 'predict_datapoint' route for diabetes prediction -->
+    <a href="{{ url_for('predict_datapoint') }}">Predict Diabetes</a>
+
+    <!-- Chart container -->
+    <canvas id="diabetesChart"></canvas>
+
+    <script>
+      // JavaScript code for creating a simple bar chart using Chart.js
+      var ctx = document.getElementById('diabetesChart').getContext('2d');
+      var diabetesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Type 1', 'Type 2', 'Gestational'],
+          datasets: [{
+            label: 'Diabetes Types',
+            data: [5, 8, 3], // Example data, you can adjust these values
+            backgroundColor: ['#3498db', '#e74c3c', '#2ecc71'],
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            }
+          }
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

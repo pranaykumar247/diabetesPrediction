@@ -47,7 +47,7 @@ def predict_datapoint():
         else:
             result = "You don't have diabetes"
         
-        return render_template('predictdata.html',result = result)
+        return render_template('home.html',result = result)
     
     else:
         return render_template('home.html')
